@@ -12,6 +12,15 @@ import SocialLinks from '../components/SocialLinks'
 function Specs({ specs }) {
     const spec_style = {'font-weight': 'bold', 'padding-right': '1em'}
     const value_style = {'text-align': 'left'}
+    specs = specs.replace(/\\n/g, "\\n")  
+               .replace(/\\'/g, "\\'")
+               .replace(/\\"/g, '\\"')
+               .replace(/\\&/g, "\\&")
+               .replace(/\\r/g, "\\r")
+               .replace(/\\t/g, "\\t")
+               .replace(/\\b/g, "\\b")
+               .replace(/\\f/g, "\\f");
+    specs = specs.replace(/[\u0000-\u0019]+/g,""); 
     const specs_obj = JSON.parse(specs)
    
     return (
